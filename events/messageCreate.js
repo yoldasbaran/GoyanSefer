@@ -7,6 +7,7 @@ const kurulum   = require('../panels/kurulum');
 const profil    = require('../commands/profil');
 const istatistik = require('../commands/istatistik');
 const sefersiralama = require('../commands/sefersiralama');
+const sefersifirlama = require('../commands/sefersifirlama');
 const { handleUyari1, handleUyari2 } = require('../commands/seferuyari');
 
 module.exports = async (message) => {
@@ -40,6 +41,10 @@ module.exports = async (message) => {
       case 'seferuyarı2':
       case 'seferuyari2':
         return await handleUyari2(message);
+
+      case 'sefersıfırlama':
+      case 'sefersifirlama':
+        return await sefersifirlama(message);
 
       default:
         // Bilinmeyen komutlara sessiz kal
