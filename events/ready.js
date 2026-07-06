@@ -19,9 +19,9 @@ module.exports = async (client) => {
     status: 'online',
   });
 
-  // ── Günlük Uyarı Kontrolü (Hafta içi 23:00 TR = 20:00 UTC) ──
+  // ── Günlük Uyarı Kontrolü (Her gün 22:00 TR = 19:00 UTC) ──
   cron.schedule(config.warning.cronSchedule, async () => {
-    console.log('[CRON] Günlük sefer uyarı kontrolü başlıyor...');
+    console.log('[CRON] Günlük sefer uyarı kontrolü başlıyor (22:00)...');
     await gundlukUyariKontrol(client);
   });
 
