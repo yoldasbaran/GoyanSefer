@@ -44,7 +44,7 @@ module.exports = {
   ],
 
   // ── Saatlik Sefer Limiti ──────────────────────────────────
-  hourlyTourLimitMs: 60 * 60 * 1000, // 1 saat
+hourlyTourLimitMs: 30 * 60 * 1000, // 30 dakika
 
   // ── Araçlar (Plakalar) ────────────────────────────────────
   vehicles: [
