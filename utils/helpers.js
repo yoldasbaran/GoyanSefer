@@ -2,6 +2,8 @@
 // utils/helpers.js — Yardımcı Fonksiyonlar
 // ============================================================
 
+const config = require('../config');
+
 function formatDuration(ms) {
   const totalSeconds = Math.floor(ms / 1000);
   const hours        = Math.floor(totalSeconds / 3600);
@@ -39,6 +41,17 @@ function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+function canStartNewTour(db, userId) {
+  const stats = db.stats[userId];
+  if (!stats?.lastTourAt) return { ok: true };
+
+  const elapsed = Date.now() - new Date(stats.lastTourAt).getTime();
+  if (elapsed < config.hourlyTourLimitMs) {
+    return { ok: false, remaining: config.hourlyTourLimitMs - elapsed };
+  }
+  return { ok: true };
+}
+
 module.exports = {
   formatDuration,
   formatDateTR,
@@ -46,4 +59,5 @@ module.exports = {
   formatTimeOnlyTR,
   hasAnyRole,
   capitalize,
+  canStartNewTour,
 };
