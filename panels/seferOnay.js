@@ -52,7 +52,8 @@ async function handleOnayla(interaction) {
       `<@${targetUserId}> kullanıcısının sefer talebi **onaylandı**.\n\n` +
       `🟢 Kalkış: **${pending.kalkis}**\n` +
       `🔴 Varış: **${pending.varis}**\n` +
-      `🚛 Araç: \`${pending.arac}\`\n` +
+      `🚗 Araç: \`${pending.arac}\`\n` +
+      (pending.sadeceGezi ? `🗺️ **Sadece gezeceğim**\n` : '') +
       `✅ Onaylayan: <@${interaction.user.id}>`
     )
     .setFooter({ text: 'GOYAN GROUP Sefer Sistemi' })
@@ -76,7 +77,8 @@ async function handleOnayla(interaction) {
             `**${interaction.user.username}** tarafından sefer talebiniz onaylandı.\n\n` +
             `🟢 Kalkış: **${pending.kalkis}**\n` +
             `🔴 Varış: **${pending.varis}**\n` +
-            `🚛 Araç: \`${pending.arac}\`\n\n` +
+            `🚗 Araç: \`${pending.arac}\`\n` +
+            (pending.sadeceGezi ? `🗺️ **Sadece gezeceğim**\n\n` : '\n') +
             `İyi yolculuklar! Seferiniz bittiğinde **#sefer-bitiş** kanalından bildirin.`
           )
           .setFooter({ text: 'GOYAN GROUP Sefer Sistemi' })
@@ -122,7 +124,8 @@ async function handleReddet(interaction) {
       `<@${targetUserId}> kullanıcısının sefer talebi **reddedildi**.\n\n` +
       `🟢 Kalkış: **${pending.kalkis}**\n` +
       `🔴 Varış: **${pending.varis}**\n` +
-      `🚛 Araç: \`${pending.arac}\`\n` +
+      `🚗 Araç: \`${pending.arac}\`\n` +
+      (pending.sadeceGezi ? `🗺️ **Sadece gezeceğim**\n` : '') +
       `❌ Reddeden: <@${interaction.user.id}>`
     )
     .setFooter({ text: 'GOYAN GROUP Sefer Sistemi' })
