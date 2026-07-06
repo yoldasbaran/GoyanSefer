@@ -24,3 +24,4 @@ module.exports = async (message, args) => {
     message.reply('❌ İstatistik getirilirken bir hata oluştu.');
   }
 };
+
