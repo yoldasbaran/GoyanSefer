@@ -45,6 +45,7 @@ async function handleSeferBitir(interaction) {
     kalkis:             active.kalkis,
     varis:              active.varis,
     arac:               active.arac,
+    sadeceGezi:         !!active.sadeceGezi,
     baslangic:          active.baslangic,
     bitis:              now.toISOString(),
     sure:               sureText,
@@ -61,6 +62,7 @@ async function handleSeferBitir(interaction) {
   stats.weeklyTours  += 1;
   stats.monthlyTours += 1;
   stats.dailyTours   += 1;
+  stats.lastTourAt    = now.toISOString();
 
   // Aktif seferden kaldır
   delete db.activeTours[userId];
