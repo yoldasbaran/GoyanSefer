@@ -35,8 +35,16 @@ module.exports = {
   cities: [
     'Niğde',
     'Adana',
-    'Gezi', // Ekstra seçenek
+    'Ceyhan',
+    'Osmaniye',
+    'Yarbaş',
+    'Kahramanmaraş',
+    'Göksun',
+    'Elbistan',
   ],
+
+  // ── Saatlik Sefer Limiti ──────────────────────────────────
+  hourlyTourLimitMs: 60 * 60 * 1000, // 1 saat
 
   // ── Araçlar (Plakalar) ────────────────────────────────────
   vehicles: [
@@ -54,9 +62,8 @@ module.exports = {
     // Günlük minimum sefer sayısı (sabit)
     dailyMinTours: 2,
 
-    // Cron: Her hafta içi gece 23:00 (Türkiye = UTC+3 → 20:00 UTC)
-    // Railway UTC üzerinde çalışır.
-    cronSchedule: '0 20 * * 1-5',
+    // Cron: Her gün 22:00 (Türkiye = UTC+3 → 19:00 UTC)
+    cronSchedule: '0 19 * * *',
 
     // Pazar 23:00 TR saati = 20:00 UTC
     weeklyCron: '0 20 * * 0',
