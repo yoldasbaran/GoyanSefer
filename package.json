@@ -1,0 +1,21 @@
+{
+  "name": "goyan-group-sefer-bot",
+  "version": "2.0.0",
+  "description": "GOYAN GROUP - Profesyonel Discord Sefer Yönetim Botu",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5",
+    "node-cron": "^3.0.3"
+  },
+  "keywords": ["discord", "bot", "sefer", "goyan"],
+  "author": "GOYAN GROUP",
+  "license": "ISC"
+}

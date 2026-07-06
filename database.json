@@ -1,0 +1,13 @@
+{
+  "activeTours": {},
+  "pendingTours": {},
+  "completedTours": [],
+  "stats": {},
+  "weeklyWarningDays": {},
+  "panels": {
+    "izinMessageId": null,
+    "izinChannelId": null,
+    "bitisMessageId": null,
+    "bitisChannelId": null
+  }
+}
