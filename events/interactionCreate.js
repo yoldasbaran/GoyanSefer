@@ -2,7 +2,7 @@
 // events/interactionCreate.js — Tüm Interaction Yöneticisi
 // ============================================================
 
-const { handleSeferBaslat, handleKalkisSecim, handleVarisSecim, handleAracSecim } = require('../panels/seferBaslat');
+const { handleSeferBaslat, handleKalkisSecim, handleVarisSecim, handleAracSecim, handleGeziToggle, handleTalepGonder } = require('../panels/seferBaslat');
 const { handleOnayla, handleReddet } = require('../panels/seferOnay');
 const { handleSeferBitir }           = require('../panels/seferBitis');
 
@@ -16,6 +16,8 @@ module.exports = async (interaction) => {
       if (id === 'sefer_bitir')             return await handleSeferBitir(interaction);
       if (id.startsWith('sefer_onayla__')) return await handleOnayla(interaction);
       if (id.startsWith('sefer_reddet__')) return await handleReddet(interaction);
+      if (id.startsWith('sefer_gezi__'))   return await handleGeziToggle(interaction);
+      if (id.startsWith('sefer_gonder__')) return await handleTalepGonder(interaction);
     }
 
     // ── Select Menu İnteraksiyonları ─────────────────────────
