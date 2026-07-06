@@ -11,6 +11,7 @@ const DB_PATH = path.resolve(config.dbPath);
 const DEFAULT_DB = {
   activeTours:       {},
   pendingTours:      {},
+  pendingSessions:   {},
   completedTours:    [],
   stats:             {},
   weeklyWarningDays: {},
@@ -52,6 +53,7 @@ function getUserStats(db, userId) {
       weeklyTours:  0,
       monthlyTours: 0,
       dailyTours:   0,
+      lastTourAt:   null,
     };
   }
   return db.stats[userId];
