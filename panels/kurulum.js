@@ -38,7 +38,7 @@ module.exports = async (message) => {
     const baslatButon = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
         .setCustomId('sefer_baslat')
-        .setLabel('🚚 Sefer Başlat')
+        .setLabel('Sefer Başlat')
         .setStyle(ButtonStyle.Success)
     );
 
