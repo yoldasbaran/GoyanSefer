@@ -10,7 +10,7 @@ const { formatDuration, formatDateTR, formatTimeOnlyTR } = require('./helpers');
 function izinPanelEmbed() {
   return new EmbedBuilder()
     .setColor(config.colors.primary)
-    .setTitle('🚛  GOYAN GROUP — SEFER İZİN PANELİ')
+    .setTitle('GOYAN GROUP — SEFER İZİN PANELİ')
     .setDescription(
       '>>> Sefere çıkmadan önce aşağıdaki butona basarak **sefer başlatabilirsiniz**.\n\n' +
       '⚠️ Aynı anda yalnızca **bir aktif seferiniz** olabilir.\n' +
@@ -37,19 +37,25 @@ function bitisPanelEmbed() {
 }
 
 // ── Onay Bekleyen Sefer Embed'i ───────────────────────────────
-function onayBekleyenEmbed({ user, kalkis, varis, arac, tarih, saat }) {
+function onayBekleyenEmbed({ user, kalkis, varis, arac, tarih, saat, sadeceGezi = false }) {
+  const fields = [
+      { name: '👤 Personel',  value: `<@${user.id}>`,  inline: true },
+      { name: '🟢 Kalkış',   value: `**${kalkis}**`,  inline: true },
+      { name: '🔴 Varış',    value: `**${varis}**`,   inline: true },
+      { name: '🚗 Araç',     value: `\`${arac}\``,    inline: true },
+      { name: '📅 Tarih',    value: tarih,            inline: true },
+      { name: '🕐 Saat',     value: saat,             inline: true },
+  ];
+
+  if (sadeceGezi) {
+    fields.push({ name: '🗺️ Not', value: '**Sadece gezeceğim**', inline: false });
+  }
+
   return new EmbedBuilder()
     .setColor(config.colors.warning)
     .setTitle('📋  YENİ SEFER TALEBİ')
     .setDescription(`<@&${config.roles.yonetim}> <@&${config.roles.genelMudur}>\nYeni bir sefer talebi onay bekliyor.`)
-    .addFields(
-      { name: '👤 Personel',  value: `<@${user.id}>`,  inline: true },
-      { name: '🟢 Kalkış',   value: `**${kalkis}**`,  inline: true },
-      { name: '🔴 Varış',    value: `**${varis}**`,   inline: true },
-      { name: '🚛 Araç',     value: `\`${arac}\``,    inline: true },
-      { name: '📅 Tarih',    value: tarih,            inline: true },
-      { name: '🕐 Saat',     value: saat,             inline: true },
-    )
+    .addFields(fields)
     .setThumbnail(user.displayAvatarURL({ dynamic: true }))
     .setFooter({ text: 'GOYAN GROUP Sefer Sistemi' })
     .setTimestamp();
@@ -65,7 +71,7 @@ function seferLogEmbed({ user, kalkis, varis, arac, baslangic, bitis, sure, onay
       { name: '👤 Şoför',         value: `<@${user.id}>`,              inline: true },
       { name: '🟢 Kalkış',        value: `**${kalkis}**`,              inline: true },
       { name: '🔴 Varış',         value: `**${varis}**`,               inline: true },
-      { name: '🚛 Araç',          value: `\`${arac}\``,                inline: true },
+      { name: '🚗 Araç',          value: `\`${arac}\``,                inline: true },
       { name: '⏱️ Toplam Süre',   value: `**${sure}**`,                inline: true },
       { name: '✅ Onaylayan',      value: `<@${onaylayan.id}>`,         inline: true },
       { name: '🕐 Başlangıç',     value: formatDateTR(new Date(baslangic)), inline: true },
@@ -138,7 +144,7 @@ function haftalikRaporEmbed(stats, completedTours) {
     .setTitle('📊  GOYAN GROUP — HAFTALIK SEFER RAPORU')
     .setDescription(`**${weekStart.toLocaleDateString('tr-TR')} – ${now.toLocaleDateString('tr-TR')}** dönemi raporu`)
     .addFields(
-      { name: '🚛 Toplam Sefer',      value: `**${totalWeekly}**`,      inline: true },
+      { name: '📊 Toplam Sefer',      value: `**${totalWeekly}**`,      inline: true },
       { name: '📈 Günlük Ortalama',   value: `**${dailyAvg}**`,         inline: true },
       { name: '👥 Aktif Sürücü',      value: `**${uniqueDrivers}**`,    inline: true },
       { name: '🏆 En Çok Sefer',      value: topDrivers,                inline: false },
